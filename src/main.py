@@ -1,12 +1,13 @@
-import logging
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from pinn_solver import PINN
+import torch
 
 def main():
-    logger.info("Initializing Physics AI Simulation...")
-    # Production-grade AI logic goes here
-    print("System Running.")
+    model = PINN()
+    # Dummy coordinates (x, t)
+    x = torch.tensor([[0.5]], dtype=torch.float32)
+    t = torch.tensor([[0.1]], dtype=torch.float32)
+    output = model(x, t)
+    print(f"Physics-AI Simulation Result: {output.item()}")
 
 if __name__ == "__main__":
     main()
